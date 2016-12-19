@@ -1,34 +1,54 @@
 package model;
 
-public class Book
-{
-	private String name;
-	private String description;
-	private double price;
-	private int quantity;
-	private String imageLink;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "produit")
+@NamedQueries({
+	@NamedQuery(name = "book.all",  query = "SELECT book FROM Book as book"),
+	@NamedQuery(name = "book.find", query = "SELECT book FROM Book as book WHERE book.id = :key"),
+})
+
+public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	
-	public Book(String name, String description, double price, int quantity, String imageLink) {
+	private String nom;
+	private String description;
+	private double prix;
+	private int qte;
+	private String image;
+	
+	@ManyToOne
+    @JoinColumn(name = "cat_id")
+	private Category cat_id;
+	
+	public Book() {
+		
+	}
+	
+	public Book(String nom, String description, double prix, int qte, String image) {
 		super();
-		this.name        = name;
+		this.nom         = nom;
 		this.description = description;
-		this.price       = price;
-		this.quantity    = quantity;
-		this.imageLink   = imageLink;
+		this.prix        = prix;
+		this.qte         = qte;
+		this.image       = image;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [name=" + name + ", description=" + description + ", price=" + price + ", quantity=" + quantity
-				+ ", imageLink=" + imageLink + "]";
+		return "Book [nom=" + nom + ", description=" + description + ", prix=" + prix + ", qte=" + qte
+				+ ", image=" + image + "]";
 	}
 
-	public String getName() {
-		return name;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNom(String name) {
+		this.nom = name;
 	}
 
 	public String getDescription() {
@@ -39,28 +59,28 @@ public class Book
 		this.description = description;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getPrix() {
+		return prix;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setPrix(double price) {
+		this.prix = price;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public int getQte() {
+		return qte;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setQte(int quantity) {
+		this.qte = quantity;
 	}
 
-	public String getImageLink() {
-		return imageLink;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImageLink(String imageLink) {
-		this.imageLink = imageLink;
+	public void setImage(String imageLink) {
+		this.image = imageLink;
 	}
 	
 }

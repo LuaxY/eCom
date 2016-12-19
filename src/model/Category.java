@@ -1,29 +1,45 @@
 package model;
 
-public class Category {
+import javax.persistence.*;
 
-	private String name;
-	private String description;
-	private String imageLink;
+@Entity
+@Table(name = "categorie")
+@NamedQueries({
+	@NamedQuery(name = "category.all",  query = "SELECT category FROM Category as category"),
+	@NamedQuery(name = "category.find", query = "SELECT category FROM Category as category WHERE category.id = :key"),
+})
+
+public class Category {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	
-	public Category(String name, String description, String imageLink) {
+	private String nom;
+	private String description;
+	private String image;
+	
+	public Category() {
+		
+	}
+	
+	public Category(String name, String description, String image) {
 		super();
-		this.name        = name;
+		this.nom         = name;
 		this.description = description;
-		this.imageLink   = imageLink;
+		this.image       = image;
 	}
 	
 	@Override
 	public String toString() {
-		return "Category [name=" + name + ", description=" + description + ", imageLink=" + imageLink + "]";
+		return "Category [name=" + nom + ", description=" + description + ", image=" + image + "]";
 	}
 	
-	public String getName() {
-		return name;
+	public String getNom() {
+		return nom;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	
 	public String getDescription() {
@@ -34,11 +50,11 @@ public class Category {
 		this.description = description;
 	}
 	
-	public String getImageLink() {
-		return imageLink;
+	public String getImage() {
+		return image;
 	}
 	
-	public void setImageLink(String imageLink) {
-		this.imageLink = imageLink;
+	public void setImage(String image) {
+		this.image = image;
 	}
 }
