@@ -11,7 +11,7 @@ public class JPAImpl<T> implements Dao<T>
     public JPAImpl()
     {
         System.out.println("++++++++ JPA ++++++++");
-        entityManager = Persistence.createEntityManagerFactory("zoo").createEntityManager();
+        entityManager = Persistence.createEntityManagerFactory("shop").createEntityManager();
     }
 
     @Override
