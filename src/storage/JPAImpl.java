@@ -11,19 +11,19 @@ public class JPAImpl<T> implements Dao<T>
     public JPAImpl()
     {
         System.out.println("++++++++ JPA ++++++++");
-        entityManager = Persistence.createEntityManagerFactory("shop").createEntityManager();
+        entityManager = Persistence.createEntityManagerFactory("eCom").createEntityManager();
     }
 
     @Override
     public T read(int id)
     {
-        return (T) entityManager.createNamedQuery("find").setParameter("key", id).getSingleResult();
+        return (T) entityManager.createNamedQuery("books.find").setParameter("key", id).getSingleResult();
     }
 
     @Override
     public List<T> readAll()
     {
-        return entityManager.createNamedQuery("all").getResultList();
+        return entityManager.createNamedQuery("books.all").getResultList();
     }
 
     @Override

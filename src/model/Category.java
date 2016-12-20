@@ -34,6 +34,14 @@ public class Category {
 		return "Category [name=" + nom + ", description=" + description + ", image=" + image + "]";
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNom() {
 		return nom;
 	}

@@ -43,6 +43,22 @@ public class Book {
 				+ ", image=" + image + "]";
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Category getCat_id() {
+		return cat_id;
+	}
+
+	public void setCat_id(Category cat_id) {
+		this.cat_id = cat_id;
+	}
+
 	public String getNom() {
 		return nom;
 	}

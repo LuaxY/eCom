@@ -7,6 +7,8 @@ public class Main
 	{
 		Shop shop = new Shop();
 		shop.init();
+		shop.buyAllBooks();
+		shop.displayTotalPrice();
 	}
 	
 }
