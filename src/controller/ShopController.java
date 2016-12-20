@@ -16,7 +16,6 @@ public class ShopController {
 	}
 	
 	private ShopController() {
-		//books = new Vector<>();
 		init();
 	}
 	
